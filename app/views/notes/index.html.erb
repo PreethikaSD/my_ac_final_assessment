@@ -1,0 +1,12 @@
+<%if @notes.present? %>
+	<%@notes.each do |note| %>
+		<%=note.content%>
+	<%end%>
+<%elsif @users.present? %>
+	<%@users.each do |user| %>
+		<%=user.email %>
+	<%end%>
+<%else%>
+<%end%>
+
+<%= link_to "Logout" , destroy_user_session_path, method: :delete  %>
