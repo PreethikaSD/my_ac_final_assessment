@@ -1,0 +1,9 @@
+<div class="row"> 
+  <div class="col-md-3">
+  <%= form_for(@note) do |form| %>
+    <%= form.label :Note %>
+    <%= form.text_area :content, class: "form-control"%>
+    <%= form.submit %>
+  <%end%>
+  </div>
+</div>
