@@ -2,14 +2,7 @@ class NotesController < ApplicationController
 	before_action :require_login,  only: [:new, :edit, :create, :update, :destroy]	
 	before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 	before_action :get_note, only: [:show, :edit, :update, :destroy]
-
-	def index
-		if user_signed_in?
-		else
-			@notes = Note.all
-			@users = User.all
-		end
-	end
+	before_action :user_process, only: [:edit, :update, :destroy]
 
 	def new
 		@note = Note.new
@@ -57,6 +50,13 @@ class NotesController < ApplicationController
 		unless user_signed_in?
 			flash[:alert] = "You must be logged in to access this section"
 			redirect_to '/users/sign_in'
+		end
+	end
+
+	def user_process
+		unless current_user.id == @note.user_id
+			flash[:alert] = "You can perform actions only on notes created by you"
+			redirect_to '/'
 		end
 	end
 

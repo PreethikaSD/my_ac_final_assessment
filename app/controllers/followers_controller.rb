@@ -10,7 +10,7 @@ class FollowersController < ApplicationController
 				redirect_to '/', notice: 'You can follow only once'
 			elsif @followed.count == 0
 				@followed.update(count: 1)
-				redirect_to '/', notice: 'You are following the user'				
+				redirect_to '/', notice: "You are following the user #{@follow.email}"				
 			end
 		else	
 		#create a record of the current user and followed user	
@@ -19,7 +19,7 @@ class FollowersController < ApplicationController
 			@follower.follow_id = current_user.id					
 			@follower.count = 1
 			if @follower.save
-				redirect_to '/', notice: 'You are following this user'
+				redirect_to '/', notice: "You are following the user #{@follow.email}"
 			else
 				render :'/', notice: 'Please try again'
 			end
@@ -35,7 +35,7 @@ class FollowersController < ApplicationController
 				redirect_to '/', notice: 'You can unfollow only once'
 			elsif @followed.count == 1
 				@followed.update(count: 0)
-				redirect_to '/', notice: 'You are unfollowing the user'				
+				redirect_to '/', notice: "You are unfollowing the user #{@follow.email}"			
 			end	
 		else	
 		#create a record of the current user and unfollowed user	
@@ -44,7 +44,7 @@ class FollowersController < ApplicationController
 			@follower.follow_id = current_user.id					
 			@follower.count = 0
 			if @follower.save
-				redirect_to '/', notice: 'You are unfollowing this user'
+				redirect_to '/', notice: "You are unfollowing the user #{@follow.email}"
 			else
 				render :'/', notice: 'Please try again'
 			end
