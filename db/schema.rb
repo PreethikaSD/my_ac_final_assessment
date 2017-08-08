@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808044256) do
+ActiveRecord::Schema.define(version: 20170808165327) do
 
   create_table "followers", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "follow_id"
+    t.integer  "follow_id"
     t.integer  "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
