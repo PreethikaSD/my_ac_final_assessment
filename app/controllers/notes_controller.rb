@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
+	before_action :require_login,  only: [:new, :edit, :create, :update, :destroy]	
 	before_action :authenticate_user!, only: [:new, :create, :update, :destroy]
 	before_action :get_note, only: [:show, :edit, :update, :destroy]
-	before_action :require_login,  only: [:new, :create, :update, :destroy]
 
 	def index
 		if user_signed_in?
@@ -56,7 +56,7 @@ class NotesController < ApplicationController
     def require_login
 		unless user_signed_in?
 			flash[:alert] = "You must be logged in to access this section"
-			redirect_to 'users/sign_in'
+			redirect_to '/users/sign_in'
 		end
 	end
 

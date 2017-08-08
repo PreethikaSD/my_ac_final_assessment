@@ -3,7 +3,7 @@
 	<%=@note.content%>
 </div>	
 <br>
-<%= link_to "Edit", edit_note_path(@note) %>
-<%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %>
+	<%= link_to "Edit", edit_note_path(@note) %>
+	<%= link_to 'Destroy', @note, method: :delete, data: { confirm: 'Are you sure?' } %>
 <br>
 <%= link_to 'Back to Notes', notes_path %>

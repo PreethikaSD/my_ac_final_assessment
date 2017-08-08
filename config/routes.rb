@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   resources :notes
   get 'users/:id/follow', to: 'followers#follow', as: :follow
   get 'users/:id/unfollow' => 'followers#unfollow', as: :unfollow 
-	#get 'exit', to: 'sessions#destroy', as: :logout
+  get '/other_users' => 'users#other_users' 
 end
