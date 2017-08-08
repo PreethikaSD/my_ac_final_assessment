@@ -15,5 +15,4 @@ class User < ApplicationRecord
 	def count_unfollow
 		self.followers.where(count: 0).count
 	end
-       
 end

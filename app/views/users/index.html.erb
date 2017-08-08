@@ -1,14 +1,26 @@
-<h3 style="text-align: center">Display Users with their Notes</h3>
-
+<%if current_user%>
+<h3 style="text-align: center">Display Users I follow</h3>
 <div style="margin-left:50px">
-	<%User.all.each do |user|%>
-		<h5><%=user.email%><%=link_to raw("   follow|#{user.count_follow}"), follow_path(user.id)%> <%=link_to raw("   unfollow|#{user.count_unfollow}"), unfollow_path(user.id) %></h5>
+
+	<% @user_array.each do |user| %>
+		<h5><%= user.email %><%=link_to raw("   follow-#{user.count_follow}"), follow_path(user.id)%> <%=link_to raw("   unfollow-#{user.count_unfollow}"), unfollow_path(user.id) %></h5>
 		<%user.notes.each do |note|%>
 			<p><%=note.content%>  <%=link_to 'Show', note %></p>
 		<%end%>	
 		<hr>
 	<%end%>	
-	<%if current_user%>
-		<%= link_to 'Create a note', new_note_path %>
+	<%= link_to 'Create a note', new_note_path %>
+<%end%>	
+</div>
+
+<h3 style="text-align: center">Display all Users with their Notes</h3>
+
+<div style="margin-left:50px">
+	<%User.all.each do |user|%>
+		<h5><%=user.email%><%=link_to raw("   follow-#{user.count_follow}"), follow_path(user.id)%> <%=link_to raw("   unfollow-#{user.count_unfollow}"), unfollow_path(user.id) %></h5>
+		<%user.notes.each do |note|%>
+			<p><%=note.content%>  <%=link_to 'Show', note %></p>
+		<%end%>	
+		<hr>
 	<%end%>	
 </div>
