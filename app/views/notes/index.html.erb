@@ -1,0 +1,9 @@
+<h3 style="text-align: center">Display my notes</h3>
+
+<div style="margin-left:50px">
+	<%@notes.each do |note|%>
+		<%=note.content%>
+		<%=link_to raw("   upvote-#{note.count_upvote}"), upvote_path(note.id)%> <%=link_to raw("   downvote-#{note.count_downvote}"), downvote_path(note.id) %>
+		<hr>
+	<%end%>	
+</div>
