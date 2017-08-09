@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808044256) do
+ActiveRecord::Schema.define(version: 20170809023842) do
 
   create_table "followers", force: :cascade do |t|
     t.integer  "user_id"
@@ -44,6 +44,14 @@ ActiveRecord::Schema.define(version: 20170808044256) do
     t.datetime "updated_at",                          null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "note_id"
+    t.integer  "count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["note_id"], name: "index_votes_on_note_id"
   end
 
 end

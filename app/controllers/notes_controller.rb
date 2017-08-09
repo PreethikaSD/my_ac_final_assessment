@@ -4,6 +4,11 @@ class NotesController < ApplicationController
 	before_action :get_note, only: [:show, :edit, :update, :destroy]
 	before_action :user_process, only: [:edit, :update, :destroy]
 
+
+	def index
+		@notes = current_user.notes
+	end
+		
 	def new
 		@note = Note.new
 	end
