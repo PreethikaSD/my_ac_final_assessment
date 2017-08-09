@@ -1,0 +1,12 @@
+Welcome to https://my-assessment-camp.herokuapp.com, <%= @user.email %>
+=======================================================================
+    <%if @vote_type == 1%>
+        Your note has just been upvoted! 
+        You can view here: http://localhost:3000/notes
+
+    <%else%> 
+        Your note has just been downvoted! 
+        You can view here: http://localhost:3000/notes      
+    <%end%>  
+
+Have a great day!

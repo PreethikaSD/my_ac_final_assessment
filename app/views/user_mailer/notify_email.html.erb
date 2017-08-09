@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h4>Welcome to https://my-assessment-camp.herokuapp.com,  <%= @user.email %></h4>
+    <%if @vote_type == 1%>
+      <p>
+        Your note has just been upvoted! <br>
+        You can view here: http://localhost:3000/notes<br>        
+      </p>
+    <%else%> 
+      <p>
+        Your note has just been downvoted! <br>
+        You can view here: http://localhost:3000/notes<br>
+      </p> 
+    <%end%>  
+    <p>Have a great day!</p>
+  </body>
+</html>
