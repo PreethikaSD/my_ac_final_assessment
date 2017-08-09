@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
 	def index
 		if user_signed_in?
-			@users = Follower.where("follow_id=? AND count=?", current_user.id, 1)
+			@users = Follower.where("follow_id=? AND count=?", current_user.id.to_i, 1)
 			@user_array = []
 			@users.each do |user|
 				@user_array << User.find(user.user_id)
