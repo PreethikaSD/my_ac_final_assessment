@@ -11,6 +11,7 @@ class VotesController < ApplicationController
 				redirect_to note_path(@note.id), notice: 'You can upvote only once'
 			elsif @vote.count == 0
 				@vote.update(count: 1)
+				UserMailer.notify_email(current_user, 1).deliver_now
 				redirect_to note_path(@note.id), notice: "You have upvoted #{@note.content}"				
 			end
 		else	
@@ -19,6 +20,7 @@ class VotesController < ApplicationController
 			@vote.note_id = @note.id
 			@vote.count = 1
 			if @vote.save
+				UserMailer.notify_email(current_user, 1).deliver_now
 				redirect_to note_path(@note.id), notice: "You have upvoted #{@note.content}"	
 			else
 				render :'/', notice: 'Please try again'
@@ -35,6 +37,7 @@ class VotesController < ApplicationController
 				redirect_to note_path(@note.id), notice: 'You can downvote only once'
 			elsif @vote.count == 1
 				@vote.update(count: 0)
+				UserMailer.notify_email(current_user, 0).deliver_now				
 				redirect_to note_path(@note.id), notice: "You have downvoted #{@note.content}"			
 			end	
 		else	
@@ -43,6 +46,7 @@ class VotesController < ApplicationController
 			@vote.note_id = @note.id
 			@vote.count = 0
 			if @vote.save
+				UserMailer.notify_email(current_user, 0).deliver_now				
 				redirect_to note_path(@note.id), notice: "You have downvoted #{@vote.content}"
 			else
 				render :'/', notice: 'Please try again'

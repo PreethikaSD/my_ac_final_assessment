@@ -1,6 +1,7 @@
 <%if current_user%>
-<h3 style="text-align: center">Display Users I follow</h3>
-<div style="margin-left:50px">
+	<div style="margin-left:50px">
+	<%= link_to 'Create a note', new_note_path %>
+	<h3 style="text-align: center">Display Users I follow</h3>
 
 	<% @user_array.each do |user| %>
 		<h5><%= user.email %><%=link_to raw("   follow-#{user.count_follow}"), follow_path(user.id)%> <%=link_to raw("   unfollow-#{user.count_unfollow}"), unfollow_path(user.id) %></h5>
@@ -9,7 +10,6 @@
 		<%end%>	
 		<hr>
 	<%end%>	
-	<%= link_to 'Create a note', new_note_path %>
 <%end%>	
 </div>
 
