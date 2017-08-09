@@ -4,7 +4,7 @@ class UserMailer < ApplicationMailer
 	def notify_email(user, type)
 		@user = user
 		@vote_type = type
-		@url = 'http://localhost:3000'
+		@url = 'https://my-assessment-camp.herokuapp.com'
 		mail(to: @user.email, subject: "Your note has been voted") 
 	end
 end
